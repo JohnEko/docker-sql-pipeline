@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
+
+
+
+    
+    
+  docker run -it \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
+    -e POSTGRES_DB="ny_taxi" \
+    -v $(pwd)ny_taxi_postgres_data:/var/lib/postgresql/data  \  
+    -p 5432:5432 \
+    postgres
+  
+    
+   docker run -it \
+    -e POSTGRES_USER="root" \
+    -e POSTGRES_PASSWORD="root" \
+    -e POSTGRES_DB="ny_taxi" \
+    -v /home/bigdata/docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data  \  
+    -p 5431:5432 \
+    postgres:13 
+    
+    
+   
+  docker run -p 8080:80 \
+     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+     -e PGADMIN_DEFAULT_PASSWORD="root" \
+     dpage/pgadmin4
+    
+
+  docker network create pg-network  
+    
+  docker run -p 5431:5432 \
+     -e POSTGRES_USER="root" \
+     -e POSTGRES_PASSWORD="root" \
+     -e POSTGRES_DB="ny_taxi" \
+     -v /home/bigdata/docker_sql/ny_taxi_postgres_data:/var/lib/postgresql/data  \  
+     --network=pg-network \
+     --name pg-database \
+     postgres:13 
+     
+  
+  docker run -p 8080:80 \
+     -e PGADMIN_DEFAULT_EMAIL="admin@admin.com" \
+     -e PGADMIN_DEFAULT_PASSWORD="root" \
+     --network=pg-network \
+     --name pgadmin \
+     dpage/pgadmin4
+    
+    
+   URL = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-01.parquet"
+
+   python ny_taxi_data.py \
+    --user=root \
+    --password="root" \
+    --host=ocalhost \
+    --port=5431 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_trips \
+    --url=${URL}
+ 
+
+ #rrruning the sript on docker
+
+ docker build -it ny_taxi_data:00v1 .
+   --network=pg-network \
+    --user=root \
+    --password="root" \
+    --host=pg-database \
+    --port=5431 \
+    --db=ny_taxi \
+    --table_name=yellow_taxi_trips \
+    --url=${URL}
+ 
+
+
+
