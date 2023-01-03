@@ -1,0 +1,17 @@
+[2022-12-26T04:26:44.306+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2022-12-26T04:26:45.386+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2022-12-26T04:26:45.387+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2022-12-26T04:26:45.662+0000] {manager.py:726} INFO - Searching for files in /opt/airflow/dags
+[2022-12-26T04:27:03.186+0000] {manager.py:729} INFO - There are 39 files in /opt/airflow/dags
+[2022-12-26T04:29:23.667+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2022-12-26T04:29:27.470+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2022-12-26T04:29:27.304+0000] {manager.py:465} INFO - Exiting gracefully upon receiving signal 15
+[2022-12-26T04:33:31.756+0000] {manager.py:483} INFO - Processing files using up to 2 processes at a time 
+[2022-12-26T04:33:40.319+0000] {manager.py:484} INFO - Process each file at most once every 30 seconds
+[2022-12-26T04:33:40.478+0000] {manager.py:486} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2022-12-26T04:33:40.481+0000] {manager.py:726} INFO - Searching for files in /opt/airflow/dags
+[2022-12-26T04:34:48.092+0000] {manager.py:729} INFO - There are 39 files in /opt/airflow/dags
+[2022-12-26T04:47:57.767+0000] {manager.py:726} INFO - Searching for files in /opt/airflow/dags
+[2022-12-26T04:51:29.772+0000] {manager.py:729} INFO - There are 39 files in /opt/airflow/dags
+[2022-12-26T04:54:31.947+0000] {manager.py:1143} ERROR - Processor for /opt/airflow/dags/data_injest.py with PID 665 started at 2022-12-26T04:41:53.338714+00:00 has timed out, killing it.
+[2022-12-26T04:54:46.156+0000] {manager.py:1143} ERROR - Processor for /home/airflow/.local/lib/python3.7/site-packages/airflow/example_dags/example_skip_dag.py with PID 679 started at 2022-12-26T04:42:54.295263+00:00 has timed out, killing it.

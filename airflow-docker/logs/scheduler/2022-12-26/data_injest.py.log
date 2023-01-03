@@ -1,0 +1,29 @@
+[2022-12-26T04:28:50.777+0000] {processor.py:153} INFO - Started process (PID=329) to work on /opt/airflow/dags/data_injest.py
+[2022-12-26T04:28:50.791+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data_injest.py for tasks to queue
+[2022-12-26T04:28:50.800+0000] {logging_mixin.py:137} INFO - [2022-12-26T04:28:50.800+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/data_injest.py
+[2022-12-26T04:29:27.295+0000] {logging_mixin.py:137} INFO - [2022-12-26T04:29:24.185+0000] {timeout.py:68} ERROR - Process timed out, PID: 329
+[2022-12-26T04:45:00.544+0000] {processor.py:153} INFO - Started process (PID=665) to work on /opt/airflow/dags/data_injest.py
+[2022-12-26T04:45:31.300+0000] {processor.py:743} INFO - Processing file /opt/airflow/dags/data_injest.py for tasks to queue
+[2022-12-26T04:45:39.653+0000] {logging_mixin.py:137} INFO - [2022-12-26T04:45:39.405+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/data_injest.py
+[2022-12-26T04:46:45.658+0000] {logging_mixin.py:137} INFO - [2022-12-26T04:46:43.728+0000] {timeout.py:68} ERROR - Process timed out, PID: 665
+[2022-12-26T04:47:24.605+0000] {logging_mixin.py:137} INFO - [2022-12-26T04:46:50.803+0000] {dagbag.py:343} ERROR - Failed to import: /opt/airflow/dags/data_injest.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/models/dagbag.py", line 339, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 728, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/data_injest.py", line 7, in <module>
+    from airflow.operators.bash import BashOperator
+  File "<frozen importlib._bootstrap>", line 983, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 967, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 677, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 724, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 857, in get_code
+  File "<frozen importlib._bootstrap_external>", line 525, in _compile_bytecode
+  File "/home/airflow/.local/lib/python3.7/site-packages/airflow/utils/timeout.py", line 69, in handle_timeout
+    raise AirflowTaskTimeout(self.error_message)
+airflow.exceptions.AirflowTaskTimeout: DagBag import timeout for /opt/airflow/dags/data_injest.py after 30.0s.
+Please take a look at these docs to improve your DAG import time:
+* https://airflow.apache.org/docs/apache-airflow/2.5.0/best-practices.html#top-level-python-code
+* https://airflow.apache.org/docs/apache-airflow/2.5.0/best-practices.html#reducing-dag-complexity, PID: 665
+[2022-12-26T04:47:30.403+0000] {processor.py:755} WARNING - No viable dags retrieved from /opt/airflow/dags/data_injest.py

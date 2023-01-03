@@ -9,6 +9,8 @@ services:
       - "./ny_taxi_postgres_data:/var/lib/postgresql/data:rw"
      ports:
       - 5431:5432
+     network:
+        -airflow
   pgadmin:
      image: dpage/pgadmin4
      environment:
@@ -16,3 +18,8 @@ services:
       - POSTGRES_DEFAULT_PASSWORD=root
      ports:
       - "8080:80"
+
+network:
+   my-proxy-net:
+      external:
+         name: airflow_default
